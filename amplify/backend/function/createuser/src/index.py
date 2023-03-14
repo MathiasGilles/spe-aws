@@ -53,12 +53,11 @@ def create_secret(key, id):
 
   all_secret = get_all_secret(key)
   all_secret[id] = str(uuid.uuid4())
-  print(all_secret)
-  response = secretmanager.put_secret_value(
+
+  secretmanager.put_secret_value(
     SecretId=key,
     SecretString= json.dumps(all_secret)
   )
-  print(response)
 
 def get_user(table, object):
   response = table.scan(
