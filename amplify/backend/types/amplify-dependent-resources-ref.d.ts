@@ -34,6 +34,9 @@ export type AmplifyDependentResourcesAttributes = {
         },
         "awsnodeiimsecret": {
             "Arn": "string"
+        },
+        "awsnodeiimaction": {
+            "Arn": "string"
         }
     },
     "api": {

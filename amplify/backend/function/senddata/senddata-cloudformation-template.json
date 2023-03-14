@@ -27,6 +27,14 @@
     "storageuserStreamArn": {
       "Type": "String",
       "Default": "storageuserStreamArn"
+    },
+    "functionawsnodeiimsecretArn": {
+      "Type": "String",
+      "Default": "functionawsnodeiimsecretArn"
+    },
+    "functionawsnodeiimactionArn": {
+      "Type": "String",
+      "Default": "functionawsnodeiimactionArn"
     }
   },
   "Conditions": {
@@ -100,7 +108,14 @@
           ]
         },
         "Runtime": "python3.8",
-        "Layers": [],
+        "Layers": [
+          {
+            "Ref": "functionawsnodeiimsecretArn"
+          },
+          {
+            "Ref": "functionawsnodeiimactionArn"
+          }
+        ],
         "Timeout": 25
       }
     },
@@ -237,6 +252,32 @@
           ]
         }
       }
+    },
+    "secretsmanagerexecutionpolicy": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyName": "secretsmanager-execution-policy",
+        "Roles": [
+          {
+            "Ref": "LambdaExecutionRole"
+          }
+        ],
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "secretsmanager:GetSecretValue"
+              ],
+              "Resource": "arn:aws:secretsmanager:eu-west-1:355243151688:secret:user_token-warezx"
+            }
+          ]
+        }
+      },
+      "DependsOn": [
+        "LambdaExecutionRole"
+      ]
     }
   },
   "Outputs": {

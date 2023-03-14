@@ -41,3 +41,11 @@ def get_all_secret (secret_name):
    secret_json = json.loads(secret_values)
 
    return secret_json
+
+def get_secret_name(secret_value):
+    all_secret = get_all_secret(SECRET_NAME)
+    for key in all_secret:
+      if all_secret[key] == secret_value:
+        return key
+
+    raise ValueError('Unknown token')

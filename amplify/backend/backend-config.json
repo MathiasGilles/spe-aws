@@ -48,6 +48,20 @@
       "service": "Lambda",
       "dependsOn": [
         {
+          "category": "function",
+          "resourceName": "awsnodeiimsecret",
+          "attributes": [
+            "Arn"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "awsnodeiimaction",
+          "attributes": [
+            "Arn"
+          ]
+        },
+        {
           "category": "storage",
           "resourceName": "user",
           "attributes": [
@@ -59,6 +73,11 @@
       ]
     },
     "awsnodeiimsecret": {
+      "providerPlugin": "awscloudformation",
+      "service": "LambdaLayer",
+      "build": true
+    },
+    "awsnodeiimaction": {
       "providerPlugin": "awscloudformation",
       "service": "LambdaLayer",
       "build": true
