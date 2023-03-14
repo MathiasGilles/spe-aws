@@ -307,7 +307,8 @@
             {
               "Effect": "Allow",
               "Action": [
-                "secretsmanager:GetSecretValue"
+                "secretsmanager:GetSecretValue",
+                "secretsmanager:PutSecretValue"
               ],
               "Resource": "arn:aws:secretsmanager:eu-west-1:355243151688:secret:user_token-warezx"
             }
