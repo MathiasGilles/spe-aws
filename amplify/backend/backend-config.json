@@ -1,0 +1,12 @@
+{
+  "storage": {
+    "user": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation"
+    },
+    "token": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation"
+    }
+  }
+}

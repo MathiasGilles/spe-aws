@@ -1,0 +1,10 @@
+{
+  "resourceName": "token",
+  "tableName": "token",
+  "partitionKey": {
+    "fieldName": "id",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}
