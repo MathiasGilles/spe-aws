@@ -39,6 +39,10 @@
     "storagetokenStreamArn": {
       "Type": "String",
       "Default": "storagetokenStreamArn"
+    },
+    "functionawsnodeiimsecretArn": {
+      "Type": "String",
+      "Default": "functionawsnodeiimsecretArn"
     }
   },
   "Conditions": {
@@ -121,7 +125,11 @@
           ]
         },
         "Runtime": "python3.8",
-        "Layers": [],
+        "Layers": [
+          {
+            "Ref": "functionawsnodeiimsecretArn"
+          }
+        ],
         "Timeout": 25
       }
     },

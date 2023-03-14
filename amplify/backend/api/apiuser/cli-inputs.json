@@ -7,6 +7,13 @@
       "permissions": {
         "setting": "open"
       }
+    },
+    "/sendData": {
+      "name": "/sendData",
+      "lambdaFunction": "senddata",
+      "permissions": {
+        "setting": "open"
+      }
     }
   }
 }

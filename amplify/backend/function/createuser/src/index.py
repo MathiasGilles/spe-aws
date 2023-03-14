@@ -3,12 +3,10 @@ import boto3
 import uuid
 import os
 from boto3.dynamodb.conditions import Attr
-
+import secret
 
 dynamodb = boto3.resource('dynamodb')
 secretmanager = boto3.client('secretsmanager')
-
-SECRET_NAME = 'user_token'
 
 def handler(event, context):
   response = {}
@@ -22,10 +20,10 @@ def handler(event, context):
   if check == False:
     create_user(table_user, potential_user)
     user = get_user(table_user, potential_user)
-    create_secret(SECRET_NAME, user['Items'][0]['id'])
-    token = get_secret(SECRET_NAME, user['Items'][0]['id'])
+    secret.create_secret(secret.SECRET_NAME, user['Items'][0]['id'])
+    token = secret.get_secret(secret.SECRET_NAME, user['Items'][0]['id'])
   else:
-    token = get_secret(SECRET_NAME,check['id'])
+    token = secret.get_secret(secret.SECRET_NAME,check['id'])
 
   response['statusCode'] = 200
   response['body'] = json.dumps({'token': token})
@@ -49,16 +47,6 @@ def create_user(table, object):
   }
   response = table.put_item(Item=obj)
 
-def create_secret(key, id):
-
-  all_secret = get_all_secret(key)
-  all_secret[id] = str(uuid.uuid4())
-
-  secretmanager.put_secret_value(
-    SecretId=key,
-    SecretString= json.dumps(all_secret)
-  )
-
 def get_user(table, object):
   response = table.scan(
          FilterExpression=Attr('lastName').eq(object['lastName']),
@@ -66,31 +54,3 @@ def get_user(table, object):
   )
 
   return response
-
-def get_secret (secret_name,secret_key):
-    secret_object = secretmanager.get_secret_value(SecretId=secret_name)
-
-    secret_values = secret_object.get('SecretString', None)
-
-    if secret_values is None:
-        raise ValueError('No keys detected')
-
-    secret_json = json.loads(secret_values)
-    secret_key_value = secret_json.get(secret_key, None)
-
-    if secret_key_value is None:
-        raise ValueError(f'No such key { secret_key }')
-
-    return secret_key_value
-
-def get_all_secret (secret_name):
-    secret_object = secretmanager.get_secret_value(SecretId=secret_name)
-
-    secret_values = secret_object.get('SecretString', None)
-
-    if secret_values is None:
-        raise ValueError('No keys detected')
-
-    secret_json = json.loads(secret_values)
-
-    return secret_json
