@@ -1,1 +1,5 @@
-{ "test": "event" }
+{
+  "firstName": "Mathias",
+  "lastName": "Gilles",
+  "age": 10
+}

@@ -15,7 +15,7 @@
       "function": {
         "createuser": {
           "deploymentBucketName": "amplify-awsnodeiim-dev-92122-deployment",
-          "s3Key": "amplify-builds/createuser-7455316e465830434d74-build.zip"
+          "s3Key": "amplify-builds/createuser-73727a73506741625a4e-build.zip"
         }
       }
     }
