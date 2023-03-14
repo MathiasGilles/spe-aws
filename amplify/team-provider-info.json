@@ -10,6 +10,14 @@
       "StackName": "amplify-awsnodeiim-dev-92122",
       "StackId": "arn:aws:cloudformation:eu-west-1:355243151688:stack/amplify-awsnodeiim-dev-92122/34e5eda0-c241-11ed-bd2f-02ac0a7b6b47",
       "AmplifyAppId": "dj1sgz7wvk0pv"
+    },
+    "categories": {
+      "function": {
+        "createuser": {
+          "deploymentBucketName": "amplify-awsnodeiim-dev-92122-deployment",
+          "s3Key": "amplify-builds/createuser-7455316e465830434d74-build.zip"
+        }
+      }
     }
   }
 }

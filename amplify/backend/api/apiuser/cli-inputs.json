@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/getToken": {
+      "name": "/getToken",
+      "lambdaFunction": "createuser",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

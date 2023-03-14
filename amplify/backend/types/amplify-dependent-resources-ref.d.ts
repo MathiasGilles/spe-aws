@@ -18,5 +18,20 @@ export type AmplifyDependentResourcesAttributes = {
             "PartitionKeyType": "string",
             "Region": "string"
         }
+    },
+    "function": {
+        "createuser": {
+            "Name": "string",
+            "Arn": "string",
+            "Region": "string",
+            "LambdaExecutionRole": "string"
+        }
+    },
+    "api": {
+        "apiuser": {
+            "RootUrl": "string",
+            "ApiName": "string",
+            "ApiId": "string"
+        }
     }
 }
