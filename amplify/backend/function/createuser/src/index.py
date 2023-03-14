@@ -8,24 +8,28 @@ from boto3.dynamodb.conditions import Attr
 dynamodb = boto3.resource('dynamodb')
 
 def handler(event, context):
+  response = {}
+
   table_user_name = os.environ['STORAGE_USER_NAME']
   table_token_name = os.environ['STORAGE_TOKEN_NAME']
   table_user = dynamodb.Table(table_user_name)
   table_token = dynamodb.Table(table_token_name)
 
-  check = check_if_user_exist(table_user, event)
+  potential_user = json.loads(event['body'])
+  check = check_if_user_exist(table_user, potential_user)
 
   if check == False:
-    create_user(table_user, event)
-    user = get_user(table_user, event)
+    create_user(table_user, potential_user)
+    user = get_user(table_user, potential_user)
     create_token(table_token, user['Items'][0]['id'])
     token = get_token(table_token, user['Items'][0]['id'])
   else:
     token = get_token(table_token, check['id'])
 
-  return {
-      'token': token
-  }
+  response['statusCode'] = 200
+  response['body'] = json.dumps({'token': token})
+
+  return response
 
 def check_if_user_exist(user_table, object):
   response = get_user(user_table, object)
