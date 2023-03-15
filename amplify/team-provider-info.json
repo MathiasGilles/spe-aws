@@ -19,7 +19,7 @@
         },
         "senddata": {
           "deploymentBucketName": "amplify-awsnodeiim-dev-92122-deployment",
-          "s3Key": "amplify-builds/senddata-57316d77714b35727a41-build.zip"
+          "s3Key": "amplify-builds/senddata-457a3949433276614570-build.zip"
         },
         "awsnodeiimsecret": {
           "deploymentBucketName": "amplify-awsnodeiim-dev-92122-deployment",

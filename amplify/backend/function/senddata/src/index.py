@@ -20,7 +20,8 @@ def handler(event, context):
   if data['action'] == Action.S3.value:
     response = trigger_lambda(os.environ['FUNCTION_CREATEJSONFILE_NAME'],data)
   elif data['action'] == Action.DYNAMO.value:
-    response = trigger_lambda(os.environ['FUNCTION_CREATEDATADYNAMO_NAME'],data)
+    trigger_lambda(os.environ['FUNCTION_CREATEDATADYNAMO_NAME'],data)
+    response = "Ok"
   else:
      response = 'Unknown action'
 
@@ -34,5 +35,4 @@ def trigger_lambda(lambda_name, data):
       FunctionName=lambda_name,
       Payload= json.dumps(data)
     )
-
  return response['Payload'].read().decode()
