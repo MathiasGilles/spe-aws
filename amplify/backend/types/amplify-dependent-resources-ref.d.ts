@@ -64,6 +64,24 @@ export type AmplifyDependentResourcesAttributes = {
         },
         "awsnodeiimUploadFie": {
             "Arn": "string"
+        },
+        "stepSlice": {
+            "Name": "string",
+            "Arn": "string",
+            "Region": "string",
+            "LambdaExecutionRole": "string"
+        },
+        "stepMapping": {
+            "Name": "string",
+            "Arn": "string",
+            "Region": "string",
+            "LambdaExecutionRole": "string"
+        },
+        "stepFinish": {
+            "Name": "string",
+            "Arn": "string",
+            "Region": "string",
+            "LambdaExecutionRole": "string"
         }
     },
     "api": {
