@@ -15,11 +15,11 @@
       "function": {
         "createuser": {
           "deploymentBucketName": "amplify-awsnodeiim-dev-92122-deployment",
-          "s3Key": "amplify-builds/createuser-31754843703245465458-build.zip"
+          "s3Key": "amplify-builds/createuser-774672376837324d6341-build.zip"
         },
         "senddata": {
           "deploymentBucketName": "amplify-awsnodeiim-dev-92122-deployment",
-          "s3Key": "amplify-builds/senddata-52482f6942776c683968-build.zip"
+          "s3Key": "amplify-builds/senddata-6f364f6174676b353672-build.zip"
         },
         "awsnodeiimsecret": {
           "deploymentBucketName": "amplify-awsnodeiim-dev-92122-deployment",
@@ -31,7 +31,7 @@
         },
         "createDataDynamo": {
           "deploymentBucketName": "amplify-awsnodeiim-dev-92122-deployment",
-          "s3Key": "amplify-builds/createDataDynamo-75373333757a48746e2f-build.zip"
+          "s3Key": "amplify-builds/createDataDynamo-7a36624b413672446d35-build.zip"
         }
       }
     }

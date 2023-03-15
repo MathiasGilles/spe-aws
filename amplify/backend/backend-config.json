@@ -52,6 +52,22 @@
       "service": "Lambda",
       "dependsOn": [
         {
+          "category": "storage",
+          "resourceName": "user",
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "createDataDynamo",
+          "attributes": [
+            "Name"
+          ]
+        },
+        {
           "category": "function",
           "resourceName": "awsnodeiimsecret",
           "attributes": [
@@ -63,15 +79,6 @@
           "resourceName": "awsnodeiimaction",
           "attributes": [
             "Arn"
-          ]
-        },
-        {
-          "category": "storage",
-          "resourceName": "user",
-          "attributes": [
-            "Name",
-            "Arn",
-            "StreamArn"
           ]
         }
       ]
