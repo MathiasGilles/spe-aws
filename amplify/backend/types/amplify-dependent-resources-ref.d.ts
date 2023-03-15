@@ -29,6 +29,14 @@ export type AmplifyDependentResourcesAttributes = {
         "bucketJsonData": {
             "BucketName": "string",
             "Region": "string"
+        },
+        "webhook": {
+            "Name": "string",
+            "Arn": "string",
+            "StreamArn": "string",
+            "PartitionKeyName": "string",
+            "PartitionKeyType": "string",
+            "Region": "string"
         }
     },
     "function": {
@@ -78,6 +86,12 @@ export type AmplifyDependentResourcesAttributes = {
             "LambdaExecutionRole": "string"
         },
         "stepFinish": {
+            "Name": "string",
+            "Arn": "string",
+            "Region": "string",
+            "LambdaExecutionRole": "string"
+        },
+        "sendDataWebHook": {
             "Name": "string",
             "Arn": "string",
             "Region": "string",
