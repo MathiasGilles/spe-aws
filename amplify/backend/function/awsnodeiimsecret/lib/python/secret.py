@@ -1,4 +1,5 @@
 import boto3
+import uuid
 import json
 
 secretmanager = boto3.client('secretsmanager')
@@ -20,13 +21,13 @@ def get_secret (secret_name,secret_key):
   secret_values = secret_object.get('SecretString', None)
 
   if secret_values is None:
-      raise ValueError('No keys detected')
+      return 'No keys detected'
 
   secret_json = json.loads(secret_values)
   secret_key_value = secret_json.get(secret_key, None)
 
   if secret_key_value is None:
-      raise ValueError(f'No such key { secret_key }')
+      return 'No such key'
 
   return secret_key_value
 
@@ -48,4 +49,4 @@ def get_secret_name(secret_value):
       if all_secret[key] == secret_value:
         return key
 
-    raise ValueError('Unknown token')
+    raise 'Unknown token'

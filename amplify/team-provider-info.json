@@ -19,20 +19,31 @@
         },
         "senddata": {
           "deploymentBucketName": "amplify-awsnodeiim-dev-92122-deployment",
-          "s3Key": "amplify-builds/senddata-6f364f6174676b353672-build.zip"
+          "s3Key": "amplify-builds/senddata-57316d77714b35727a41-build.zip"
         },
         "awsnodeiimsecret": {
           "deploymentBucketName": "amplify-awsnodeiim-dev-92122-deployment",
-          "s3Key": "amplify-builds/awsnodeiimsecret-LambdaLayerVersion1d51dbf0-build.zip"
+          "s3Key": "amplify-builds/awsnodeiimsecret-LambdaLayerVersion7653a52d-build.zip"
         },
         "awsnodeiimaction": {
           "deploymentBucketName": "amplify-awsnodeiim-dev-92122-deployment",
-          "s3Key": "amplify-builds/awsnodeiimaction-LambdaLayerVersion6aa9c55d-build.zip"
+          "s3Key": "amplify-builds/awsnodeiimaction-LambdaLayerVersion3f5d12a3-build.zip"
         },
         "createDataDynamo": {
           "deploymentBucketName": "amplify-awsnodeiim-dev-92122-deployment",
           "s3Key": "amplify-builds/createDataDynamo-7a36624b413672446d35-build.zip"
+        },
+        "createJsonFile": {
+          "deploymentBucketName": "amplify-awsnodeiim-dev-92122-deployment",
+          "s3Key": "amplify-builds/createJsonFile-413548746b49594c394f-build.zip"
+        },
+        "awsnodeiimUploadFie": {
+          "deploymentBucketName": "amplify-awsnodeiim-dev-92122-deployment",
+          "s3Key": "amplify-builds/awsnodeiimUploadFie-LambdaLayerVersion5e2cf9e2-build.zip"
         }
+      },
+      "auth": {
+        "awsnodeiim93264e0a": {}
       }
     }
   }

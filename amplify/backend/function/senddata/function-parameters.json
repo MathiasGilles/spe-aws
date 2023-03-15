@@ -12,6 +12,10 @@
       "createDataDynamo": [
         "create",
         "read"
+      ],
+      "createJsonFile": [
+        "create",
+        "read"
       ]
     }
   },

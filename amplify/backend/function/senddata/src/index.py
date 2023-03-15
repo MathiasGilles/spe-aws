@@ -18,21 +18,21 @@ def handler(event, context):
   data['userId'] = user_id
 
   if data['action'] == Action.S3.value:
-    #response = trigger_lambda('',data)
-    response = "to do s3"
+    response = trigger_lambda(os.environ['FUNCTION_CREATEJSONFILE_NAME'],data)
   elif data['action'] == Action.DYNAMO.value:
-    trigger_lambda(os.environ['FUNCTION_CREATEDATADYNAMO_NAME'],data)
-    response = 'Data sauvegardé'
+    response = trigger_lambda(os.environ['FUNCTION_CREATEDATADYNAMO_NAME'],data)
   else:
      response = 'Unknown action'
 
   return {
       'statusCode': 200,
-      'body': json.dumps(response)
+      'body': json.dumps({'result':response})
   }
 
 def trigger_lambda(lambda_name, data):
- client.invoke(
+ response = client.invoke(
       FunctionName=lambda_name,
       Payload= json.dumps(data)
     )
+
+ return response['Payload'].read().decode()

@@ -11,6 +11,11 @@
     "data": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation"
+    },
+    "bucketJsonData": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": []
     }
   },
   "function": {
@@ -69,6 +74,13 @@
         },
         {
           "category": "function",
+          "resourceName": "createJsonFile",
+          "attributes": [
+            "Name"
+          ]
+        },
+        {
+          "category": "function",
           "resourceName": "awsnodeiimsecret",
           "attributes": [
             "Arn"
@@ -108,6 +120,32 @@
           ]
         }
       ]
+    },
+    "createJsonFile": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "awsnodeiimUploadFie",
+          "attributes": [
+            "Arn"
+          ]
+        },
+        {
+          "category": "storage",
+          "resourceName": "bucketJsonData",
+          "attributes": [
+            "BucketName"
+          ]
+        }
+      ]
+    },
+    "awsnodeiimUploadFie": {
+      "providerPlugin": "awscloudformation",
+      "service": "LambdaLayer",
+      "build": true
     }
   },
   "api": {
@@ -132,6 +170,34 @@
           ]
         }
       ]
+    }
+  },
+  "auth": {
+    "awsnodeiim93264e0a": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      }
     }
   }
 }

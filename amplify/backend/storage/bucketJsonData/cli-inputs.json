@@ -1,0 +1,14 @@
+{
+  "resourceName": "bucketJsonData",
+  "policyUUID": "8da6625b",
+  "bucketName": "bucketjsondata",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}
