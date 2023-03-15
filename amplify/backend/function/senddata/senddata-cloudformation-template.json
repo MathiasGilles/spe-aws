@@ -35,6 +35,10 @@
     "functionawsnodeiimactionArn": {
       "Type": "String",
       "Default": "functionawsnodeiimactionArn"
+    },
+    "functioncreateDataDynamoName": {
+      "Type": "String",
+      "Default": "functioncreateDataDynamoName"
     }
   },
   "Conditions": {
@@ -98,6 +102,9 @@
             },
             "STORAGE_USER_STREAMARN": {
               "Ref": "storageuserStreamArn"
+            },
+            "FUNCTION_CREATEDATADYNAMO_NAME": {
+              "Ref": "functioncreateDataDynamoName"
             }
           }
         },
@@ -244,6 +251,38 @@
                         "Ref": "storageuserArn"
                       },
                       "index/*"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "lambda:Create*",
+                "lambda:Put*",
+                "lambda:Add*",
+                "lambda:Get*",
+                "lambda:List*",
+                "lambda:Invoke*"
+              ],
+              "Resource": [
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:lambda:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":",
+                      {
+                        "Ref": "AWS::AccountId"
+                      },
+                      ":function:",
+                      {
+                        "Ref": "functioncreateDataDynamoName"
+                      }
                     ]
                   ]
                 }

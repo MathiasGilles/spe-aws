@@ -7,22 +7,28 @@
         "update",
         "delete"
       ]
+    },
+    "function": {
+      "createDataDynamo": [
+        "create",
+        "read"
+      ]
     }
   },
   "lambdaLayers": [
     {
       "type": "ProjectLayer",
       "resourceName": "awsnodeiimsecret",
-      "env": "dev",
       "version": "Always choose latest version",
-      "isLatestVersionSelected": true
+      "isLatestVersionSelected": true,
+      "env": "dev"
     },
     {
       "type": "ProjectLayer",
       "resourceName": "awsnodeiimaction",
-      "env": "dev",
       "version": "Always choose latest version",
-      "isLatestVersionSelected": true
+      "isLatestVersionSelected": true,
+      "env": "dev"
     }
   ]
 }

@@ -4,6 +4,8 @@ import os
 import boto3
 from action import Action
 
+client = boto3.client('lambda')
+
 def handler(event, context):
   headers = event.get('headers') or {}
   api_key = headers.get('x-api-key')
@@ -16,25 +18,21 @@ def handler(event, context):
   data['userId'] = user_id
 
   if data['action'] == Action.S3.value:
-    response = trigger_lambda('createDataDynamo',data)
-  elif data['action'] == Action.DYNAMO.value:
     #response = trigger_lambda('',data)
     response = "to do s3"
+  elif data['action'] == Action.DYNAMO.value:
+    trigger_lambda(os.environ['FUNCTION_CREATEDATADYNAMO_NAME'],data)
+    response = 'Data sauvegardé'
   else:
-     raise ValueError('Unknown action')
+     response = 'Unknown action'
 
   return {
       'statusCode': 200,
-      'headers': {
-          'Access-Control-Allow-Headers': '*',
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
-      },
       'body': json.dumps(response)
   }
 
 def trigger_lambda(lambda_name, data):
- boto3.invoke(
-      FunctionName=lambda_name+"-"+str(os.environ['ENV']),
+ client.invoke(
+      FunctionName=lambda_name,
       Payload= json.dumps(data)
     )
