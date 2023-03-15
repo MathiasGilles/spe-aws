@@ -40,6 +40,18 @@
         "awsnodeiimUploadFie": {
           "deploymentBucketName": "amplify-awsnodeiim-dev-92122-deployment",
           "s3Key": "amplify-builds/awsnodeiimUploadFie-LambdaLayerVersion5e2cf9e2-build.zip"
+        },
+        "stepSlice": {
+          "deploymentBucketName": "amplify-awsnodeiim-dev-92122-deployment",
+          "s3Key": "amplify-builds/stepSlice-537570316d4372764a31-build.zip"
+        },
+        "stepMapping": {
+          "deploymentBucketName": "amplify-awsnodeiim-dev-92122-deployment",
+          "s3Key": "amplify-builds/stepMapping-58363455766d465a6d6f-build.zip"
+        },
+        "stepFinish": {
+          "deploymentBucketName": "amplify-awsnodeiim-dev-92122-deployment",
+          "s3Key": "amplify-builds/stepFinish-49746c50393965666e54-build.zip"
         }
       },
       "auth": {
