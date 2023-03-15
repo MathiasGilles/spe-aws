@@ -19,7 +19,7 @@
         },
         "senddata": {
           "deploymentBucketName": "amplify-awsnodeiim-dev-92122-deployment",
-          "s3Key": "amplify-builds/senddata-727a4f763976654d304c-build.zip"
+          "s3Key": "amplify-builds/senddata-52482f6942776c683968-build.zip"
         },
         "awsnodeiimsecret": {
           "deploymentBucketName": "amplify-awsnodeiim-dev-92122-deployment",
@@ -28,6 +28,10 @@
         "awsnodeiimaction": {
           "deploymentBucketName": "amplify-awsnodeiim-dev-92122-deployment",
           "s3Key": "amplify-builds/awsnodeiimaction-LambdaLayerVersion6aa9c55d-build.zip"
+        },
+        "createDataDynamo": {
+          "deploymentBucketName": "amplify-awsnodeiim-dev-92122-deployment",
+          "s3Key": "amplify-builds/createDataDynamo-75373333757a48746e2f-build.zip"
         }
       }
     }
