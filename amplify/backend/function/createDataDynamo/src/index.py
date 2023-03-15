@@ -11,7 +11,6 @@ dynamodb = boto3.resource('dynamodb', config=my_config)
 table_data_name = os.environ['STORAGE_DATA_NAME']
 table_data = dynamodb.Table(table_data_name)
 
-
 def handler(event, context):
     obj = {
         'id': str(uuid.uuid4()),
@@ -21,6 +20,4 @@ def handler(event, context):
 
     response = table_data.put_item(Item=obj)
 
-    return {
-        response
-    }
+    return json.dumps(response)
