@@ -16,6 +16,18 @@
     "s3Key": {
       "Type": "String"
     },
+    "storageuserName": {
+      "Type": "String",
+      "Default": "storageuserName"
+    },
+    "storageuserArn": {
+      "Type": "String",
+      "Default": "storageuserArn"
+    },
+    "storageuserStreamArn": {
+      "Type": "String",
+      "Default": "storageuserStreamArn"
+    },
     "storagewebhookName": {
       "Type": "String",
       "Default": "storagewebhookName"
@@ -28,21 +40,13 @@
       "Type": "String",
       "Default": "storagewebhookStreamArn"
     },
-    "functionawsnodeiimsecretArn": {
+    "storagebucketJsonDataBucketName": {
       "Type": "String",
-      "Default": "functionawsnodeiimsecretArn"
+      "Default": "storagebucketJsonDataBucketName"
     },
-    "storageuserName": {
+    "functionawsnodeiimUploadFieArn": {
       "Type": "String",
-      "Default": "storageuserName"
-    },
-    "storageuserArn": {
-      "Type": "String",
-      "Default": "storageuserArn"
-    },
-    "storageuserStreamArn": {
-      "Type": "String",
-      "Default": "storageuserStreamArn"
+      "Default": "functionawsnodeiimUploadFieArn"
     }
   },
   "Conditions": {
@@ -75,12 +79,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "sendDataWebHook",
+            "sqsReceiver",
             {
               "Fn::Join": [
                 "",
                 [
-                  "sendDataWebHook",
+                  "sqsReceiver",
                   "-",
                   {
                     "Ref": "env"
@@ -98,6 +102,15 @@
             "REGION": {
               "Ref": "AWS::Region"
             },
+            "STORAGE_USER_NAME": {
+              "Ref": "storageuserName"
+            },
+            "STORAGE_USER_ARN": {
+              "Ref": "storageuserArn"
+            },
+            "STORAGE_USER_STREAMARN": {
+              "Ref": "storageuserStreamArn"
+            },
             "STORAGE_WEBHOOK_NAME": {
               "Ref": "storagewebhookName"
             },
@@ -107,14 +120,8 @@
             "STORAGE_WEBHOOK_STREAMARN": {
               "Ref": "storagewebhookStreamArn"
             },
-            "STORAGE_USER_NAME": {
-              "Ref": "storageuserName"
-            },
-            "STORAGE_USER_ARN": {
-              "Ref": "storageuserArn"
-            },
-            "STORAGE_USER_STREAMARN": {
-              "Ref": "storageuserStreamArn"
+            "STORAGE_BUCKETJSONDATA_BUCKETNAME": {
+              "Ref": "storagebucketJsonDataBucketName"
             }
           }
         },
@@ -127,7 +134,7 @@
         "Runtime": "python3.8",
         "Layers": [
           {
-            "Ref": "functionawsnodeiimsecretArn"
+            "Ref": "functionawsnodeiimUploadFieArn"
           }
         ],
         "Timeout": 25
@@ -139,12 +146,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "awsnodeiimLambdaRole726dbf08",
+            "awsnodeiimLambdaRolea89c40a9",
             {
               "Fn::Join": [
                 "",
                 [
-                  "awsnodeiimLambdaRole726dbf08",
+                  "awsnodeiimLambdaRolea89c40a9",
                   "-",
                   {
                     "Ref": "env"
@@ -215,6 +222,32 @@
         }
       }
     },
+    "sqsexecutionpolicy": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyName": "sqs-execution-policy",
+        "Roles": [
+          {
+            "Ref": "LambdaExecutionRole"
+          }
+        ],
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "sqs:*"
+              ],
+              "Resource": "*"
+            }
+          ]
+        }
+      },
+      "DependsOn": [
+        "LambdaExecutionRole"
+      ]
+    },
     "AmplifyResourcesPolicy": {
       "DependsOn": [
         "LambdaExecutionRole"
@@ -265,6 +298,45 @@
             },
             {
               "Effect": "Allow",
+              "Action": "s3:ListBucket",
+              "Resource": [
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:s3:::",
+                      {
+                        "Ref": "storagebucketJsonDataBucketName"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "s3:PutObject",
+                "s3:GetObject",
+                "s3:DeleteObject"
+              ],
+              "Resource": [
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:s3:::",
+                      {
+                        "Ref": "storagebucketJsonDataBucketName"
+                      },
+                      "/*"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "Effect": "Allow",
               "Action": [
                 "dynamodb:Put*",
                 "dynamodb:Create*",
@@ -299,58 +371,6 @@
           ]
         }
       }
-    },
-    "secretsmanagerexecutionpolicy": {
-      "Type": "AWS::IAM::Policy",
-      "Properties": {
-        "PolicyName": "secretsmanager-execution-policy",
-        "Roles": [
-          {
-            "Ref": "LambdaExecutionRole"
-          }
-        ],
-        "PolicyDocument": {
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Effect": "Allow",
-              "Action": [
-                "secretsmanager:GetSecretValue"
-              ],
-              "Resource": "arn:aws:secretsmanager:eu-west-1:355243151688:secret:user_token-warezx"
-            }
-          ]
-        }
-      },
-      "DependsOn": [
-        "LambdaExecutionRole"
-      ]
-    },
-    "sqsexecutionpolicy": {
-      "Type": "AWS::IAM::Policy",
-      "Properties": {
-        "PolicyName": "sqs-execution-policy",
-        "Roles": [
-          {
-            "Ref": "LambdaExecutionRole"
-          }
-        ],
-        "PolicyDocument": {
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Effect": "Allow",
-              "Action": [
-                "sqs:*"
-              ],
-              "Resource": "*"
-            }
-          ]
-        }
-      },
-      "DependsOn": [
-        "LambdaExecutionRole"
-      ]
     }
   },
   "Outputs": {

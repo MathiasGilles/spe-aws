@@ -1,0 +1,33 @@
+{
+  "lambdaLayers": [
+    {
+      "type": "ProjectLayer",
+      "resourceName": "awsnodeiimUploadFie",
+      "env": "dev",
+      "version": "Always choose latest version",
+      "isLatestVersionSelected": true
+    }
+  ],
+  "permissions": {
+    "storage": {
+      "user": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "bucketJsonData": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "webhook": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
+  }
+}

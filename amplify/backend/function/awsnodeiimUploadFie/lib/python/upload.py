@@ -2,9 +2,9 @@ import boto3
 
 s3_client = boto3.client('s3')
 
-def upload_file(file_name, bucket):
+def upload_file(file_name, bucket, key="data/data.json"):
     try:
-        response = s3_client.put_object(Body=file_name, Bucket=bucket, Key="data/data.json")
+        response = s3_client.put_object(Body=file_name, Bucket=bucket, Key=key)
     except ClientError as e:
         return False
     return True

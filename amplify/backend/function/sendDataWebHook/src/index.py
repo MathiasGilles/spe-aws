@@ -11,6 +11,9 @@ table = dynamodb.Table(table_name)
 table_user_name = os.environ['STORAGE_USER_NAME']
 table_user = dynamodb.Table(table_user_name)
 
+sqs = boto3.client('sqs')
+SQS_URL = "https://sqs.eu-west-1.amazonaws.com/355243151688/webhookSqs"
+
 def handler(event, context):
   response = {}
 
@@ -41,6 +44,8 @@ def handler(event, context):
     response['statusCode'] = 500
     response['body'] = json.dumps({"result":"Problème lors de l'insertion"})
 
+  send_to_sqs(user_id)
+
   return response
 
 
@@ -63,7 +68,7 @@ def update_user(table, user_id, data):
     ':webhook' : data['webhook']
   }
   sk = get_user_sk(table,user_id)
-  print(sk)
+
   try:
     table.update_item(
       Key={'id': user_id, 'lastName': sk},
@@ -80,3 +85,10 @@ def get_user_sk(table, user_id):
     ProjectionExpression="lastName"
   )
   return response['Items'][0]['lastName']
+
+def send_to_sqs(user_id):
+  truc = sqs.send_message(
+    QueueUrl=SQS_URL,
+    MessageBody=json.dumps({'userId':user_id})
+  )
+  print(truc)
