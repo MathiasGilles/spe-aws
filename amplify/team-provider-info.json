@@ -35,11 +35,11 @@
         },
         "createJsonFile": {
           "deploymentBucketName": "amplify-awsnodeiim-dev-92122-deployment",
-          "s3Key": "amplify-builds/createJsonFile-413548746b49594c394f-build.zip"
+          "s3Key": "amplify-builds/createJsonFile-4a477248594d50325478-build.zip"
         },
         "awsnodeiimUploadFie": {
           "deploymentBucketName": "amplify-awsnodeiim-dev-92122-deployment",
-          "s3Key": "amplify-builds/awsnodeiimUploadFie-LambdaLayerVersiond0f0f69b-build.zip"
+          "s3Key": "amplify-builds/awsnodeiimUploadFie-LambdaLayerVersiond5c71060-build.zip"
         },
         "stepSlice": {
           "deploymentBucketName": "amplify-awsnodeiim-dev-92122-deployment",
@@ -55,15 +55,48 @@
         },
         "sendDataWebHook": {
           "deploymentBucketName": "amplify-awsnodeiim-dev-92122-deployment",
-          "s3Key": "amplify-builds/sendDataWebHook-44563933483670794636-build.zip"
+          "s3Key": "amplify-builds/sendDataWebHook-2f727342547477675256-build.zip"
         },
         "sqsReceiver": {
           "deploymentBucketName": "amplify-awsnodeiim-dev-92122-deployment",
-          "s3Key": "amplify-builds/sqsReceiver-516a5561626958647446-build.zip"
+          "s3Key": "amplify-builds/sqsReceiver-565a5738303332387a7a-build.zip"
+        },
+        "s3Receiver": {
+          "deploymentBucketName": "amplify-awsnodeiim-dev-92122-deployment",
+          "s3Key": "amplify-builds/s3Receiver-41564a67686339454b6b-build.zip"
         }
       },
       "auth": {
         "awsnodeiim93264e0a": {}
+      }
+    }
+  },
+  "sos": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-awsnodeiim-sos-145359-authRole",
+      "UnauthRoleArn": "arn:aws:iam::355243151688:role/amplify-awsnodeiim-sos-145359-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::355243151688:role/amplify-awsnodeiim-sos-145359-authRole",
+      "Region": "eu-west-1",
+      "DeploymentBucketName": "amplify-awsnodeiim-sos-145359-deployment",
+      "UnauthRoleName": "amplify-awsnodeiim-sos-145359-unauthRole",
+      "StackName": "amplify-awsnodeiim-sos-145359",
+      "StackId": "arn:aws:cloudformation:eu-west-1:355243151688:stack/amplify-awsnodeiim-sos-145359/009c85f0-c402-11ed-b2d7-06f5cac5e845",
+      "AmplifyAppId": "dj1sgz7wvk0pv"
+    },
+    "categories": {
+      "auth": {
+        "awsnodeiim93264e0a": {}
+      },
+      "function": {
+        "createuser": {},
+        "senddata": {},
+        "createDataDynamo": {},
+        "createJsonFile": {},
+        "stepSlice": {},
+        "stepMapping": {},
+        "stepFinish": {},
+        "sendDataWebHook": {},
+        "sqsReceiver": {}
       }
     }
   }

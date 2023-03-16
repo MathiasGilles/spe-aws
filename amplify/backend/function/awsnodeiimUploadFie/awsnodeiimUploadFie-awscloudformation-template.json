@@ -20,7 +20,7 @@
     }
   },
   "Resources": {
-    "LambdaLayerVersiond0f0f69b": {
+    "LambdaLayerVersiond5c71060": {
       "Type": "AWS::Lambda::LayerVersion",
       "Properties": {
         "CompatibleRuntimes": {
@@ -51,19 +51,19 @@
       "DeletionPolicy": "Delete",
       "UpdateReplacePolicy": "Retain"
     },
-    "LambdaLayerPermissionPrivated0f0f69b": {
+    "LambdaLayerPermissionPrivated5c71060": {
       "Type": "AWS::Lambda::LayerVersionPermission",
       "Properties": {
         "Action": "lambda:GetLayerVersion",
         "LayerVersionArn": {
-          "Ref": "LambdaLayerVersiond0f0f69b"
+          "Ref": "LambdaLayerVersiond5c71060"
         },
         "Principal": {
           "Ref": "AWS::AccountId"
         }
       }
     },
-    "LambdaLayerVersion5e2cf9e2": {
+    "LambdaLayerVersionf1f77f76": {
       "Type": "AWS::Lambda::LayerVersion",
       "Properties": {
         "CompatibleRuntimes": [
@@ -73,9 +73,9 @@
           "S3Bucket": {
             "Ref": "deploymentBucketName"
           },
-          "S3Key": "amplify-builds/awsnodeiimUploadFie-LambdaLayerVersion5e2cf9e2-build.zip"
+          "S3Key": "amplify-builds/awsnodeiimUploadFie-LambdaLayerVersionf1f77f76-build.zip"
         },
-        "Description": "Updated layer version 2023-03-15T11:01:58.662Z",
+        "Description": "Updated layer version 2023-03-16T15:25:37.089Z",
         "LayerName": {
           "Fn::Sub": [
             "awsnodeiimUploadFie-${env}",
@@ -90,17 +90,17 @@
       "DeletionPolicy": "Delete",
       "UpdateReplacePolicy": "Retain"
     },
-    "LambdaLayerPermissionPrivate5e2cf9e2": {
+    "LambdaLayerPermissionPrivatef1f77f76": {
       "Type": "AWS::Lambda::LayerVersionPermission",
       "Properties": {
         "Action": "lambda:GetLayerVersion",
-        "LayerVersionArn": "arn:aws:lambda:eu-west-1:355243151688:layer:awsnodeiimUploadFie-dev:2",
+        "LayerVersionArn": "arn:aws:lambda:eu-west-1:355243151688:layer:awsnodeiimUploadFie-dev:8",
         "Principal": {
           "Ref": "AWS::AccountId"
         }
       }
     },
-    "LambdaLayerVersion31fbdb8f": {
+    "LambdaLayerVersion42027694": {
       "Type": "AWS::Lambda::LayerVersion",
       "Properties": {
         "CompatibleRuntimes": [
@@ -110,9 +110,9 @@
           "S3Bucket": {
             "Ref": "deploymentBucketName"
           },
-          "S3Key": "amplify-builds/awsnodeiimUploadFie-LambdaLayerVersion31fbdb8f-build.zip"
+          "S3Key": "amplify-builds/awsnodeiimUploadFie-LambdaLayerVersion42027694-build.zip"
         },
-        "Description": "Updated layer version 2023-03-15T10:56:48.326Z",
+        "Description": "Updated layer version 2023-03-16T15:19:21.886Z",
         "LayerName": {
           "Fn::Sub": [
             "awsnodeiimUploadFie-${env}",
@@ -127,11 +127,122 @@
       "DeletionPolicy": "Delete",
       "UpdateReplacePolicy": "Retain"
     },
-    "LambdaLayerPermissionPrivate31fbdb8f": {
+    "LambdaLayerPermissionPrivate42027694": {
       "Type": "AWS::Lambda::LayerVersionPermission",
       "Properties": {
         "Action": "lambda:GetLayerVersion",
-        "LayerVersionArn": "arn:aws:lambda:eu-west-1:355243151688:layer:awsnodeiimUploadFie-dev:1",
+        "LayerVersionArn": "arn:aws:lambda:eu-west-1:355243151688:layer:awsnodeiimUploadFie-dev:7",
+        "Principal": {
+          "Ref": "AWS::AccountId"
+        }
+      }
+    },
+    "LambdaLayerVersion31d45788": {
+      "Type": "AWS::Lambda::LayerVersion",
+      "Properties": {
+        "CompatibleRuntimes": [
+          "python3.8"
+        ],
+        "Content": {
+          "S3Bucket": {
+            "Ref": "deploymentBucketName"
+          },
+          "S3Key": "amplify-builds/awsnodeiimUploadFie-LambdaLayerVersion31d45788-build.zip"
+        },
+        "Description": "Updated layer version 2023-03-16T14:46:35.676Z",
+        "LayerName": {
+          "Fn::Sub": [
+            "awsnodeiimUploadFie-${env}",
+            {
+              "env": {
+                "Ref": "env"
+              }
+            }
+          ]
+        }
+      },
+      "DeletionPolicy": "Delete",
+      "UpdateReplacePolicy": "Retain"
+    },
+    "LambdaLayerPermissionPrivate31d45788": {
+      "Type": "AWS::Lambda::LayerVersionPermission",
+      "Properties": {
+        "Action": "lambda:GetLayerVersion",
+        "LayerVersionArn": "arn:aws:lambda:eu-west-1:355243151688:layer:awsnodeiimUploadFie-dev:6",
+        "Principal": {
+          "Ref": "AWS::AccountId"
+        }
+      }
+    },
+    "LambdaLayerVersion95d2d1b0": {
+      "Type": "AWS::Lambda::LayerVersion",
+      "Properties": {
+        "CompatibleRuntimes": [
+          "python3.8"
+        ],
+        "Content": {
+          "S3Bucket": {
+            "Ref": "deploymentBucketName"
+          },
+          "S3Key": "amplify-builds/awsnodeiimUploadFie-LambdaLayerVersion95d2d1b0-build.zip"
+        },
+        "Description": "Updated layer version 2023-03-16T14:32:40.299Z",
+        "LayerName": {
+          "Fn::Sub": [
+            "awsnodeiimUploadFie-${env}",
+            {
+              "env": {
+                "Ref": "env"
+              }
+            }
+          ]
+        }
+      },
+      "DeletionPolicy": "Delete",
+      "UpdateReplacePolicy": "Retain"
+    },
+    "LambdaLayerPermissionPrivate95d2d1b0": {
+      "Type": "AWS::Lambda::LayerVersionPermission",
+      "Properties": {
+        "Action": "lambda:GetLayerVersion",
+        "LayerVersionArn": "arn:aws:lambda:eu-west-1:355243151688:layer:awsnodeiimUploadFie-dev:5",
+        "Principal": {
+          "Ref": "AWS::AccountId"
+        }
+      }
+    },
+    "LambdaLayerVersion918957b4": {
+      "Type": "AWS::Lambda::LayerVersion",
+      "Properties": {
+        "CompatibleRuntimes": [
+          "python3.8"
+        ],
+        "Content": {
+          "S3Bucket": {
+            "Ref": "deploymentBucketName"
+          },
+          "S3Key": "amplify-builds/awsnodeiimUploadFie-LambdaLayerVersion918957b4-build.zip"
+        },
+        "Description": "Updated layer version 2023-03-16T14:20:14.978Z",
+        "LayerName": {
+          "Fn::Sub": [
+            "awsnodeiimUploadFie-${env}",
+            {
+              "env": {
+                "Ref": "env"
+              }
+            }
+          ]
+        }
+      },
+      "DeletionPolicy": "Delete",
+      "UpdateReplacePolicy": "Retain"
+    },
+    "LambdaLayerPermissionPrivate918957b4": {
+      "Type": "AWS::Lambda::LayerVersionPermission",
+      "Properties": {
+        "Action": "lambda:GetLayerVersion",
+        "LayerVersionArn": "arn:aws:lambda:eu-west-1:355243151688:layer:awsnodeiimUploadFie-dev:4",
         "Principal": {
           "Ref": "AWS::AccountId"
         }
@@ -141,7 +252,7 @@
   "Outputs": {
     "Arn": {
       "Value": {
-        "Ref": "LambdaLayerVersiond0f0f69b"
+        "Ref": "LambdaLayerVersiond5c71060"
       }
     }
   }

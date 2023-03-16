@@ -16,18 +16,21 @@ SQS_URL = "https://sqs.eu-west-1.amazonaws.com/355243151688/webhookSqs"
 bucket = os.environ['STORAGE_BUCKETJSONDATA_BUCKETNAME']
 
 def handler(event, context):
+
   user_id = json.loads(event['Records'][0]['body'])['userId']
   webhook = get_webhook(user_id)
   data = get_data(user_id)
-  print(type(data)
-  #data['userId'] = user_id
-  #data['webhook'] = webhook
+  
+  response = {}
+  response['userId'] = user_id
+  response['webhook'] = webhook
+  response['data'] = data
 
-  #upld = upload.upload_file(data, bucket, "webhook/data.json")
-
+  upld = upload.upload_file(json.dumps(response), bucket, key="webhook/data.json")
+  print(upld)
   return {
-      'statusCode': 200,
-      'body': json.dumps('Hello from your new Amplify Python lambda!')
+    'statusCode': 200,
+    'body': json.dumps('Hello from your new Amplify Python lambda!')
   }
 
 def get_webhook(user_id):
