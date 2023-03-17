@@ -23,7 +23,7 @@
         },
         "awsnodeiimsecret": {
           "deploymentBucketName": "amplify-awsnodeiim-dev-92122-deployment",
-          "s3Key": "amplify-builds/awsnodeiimsecret-LambdaLayerVersion7653a52d-build.zip"
+          "s3Key": "amplify-builds/awsnodeiimsecret-LambdaLayerVersionac7843ee-build.zip"
         },
         "awsnodeiimaction": {
           "deploymentBucketName": "amplify-awsnodeiim-dev-92122-deployment",
@@ -35,11 +35,11 @@
         },
         "createJsonFile": {
           "deploymentBucketName": "amplify-awsnodeiim-dev-92122-deployment",
-          "s3Key": "amplify-builds/createJsonFile-413548746b49594c394f-build.zip"
+          "s3Key": "amplify-builds/createJsonFile-4a477248594d50325478-build.zip"
         },
         "awsnodeiimUploadFie": {
           "deploymentBucketName": "amplify-awsnodeiim-dev-92122-deployment",
-          "s3Key": "amplify-builds/awsnodeiimUploadFie-LambdaLayerVersion5e2cf9e2-build.zip"
+          "s3Key": "amplify-builds/awsnodeiimUploadFie-LambdaLayerVersiond5c71060-build.zip"
         },
         "stepSlice": {
           "deploymentBucketName": "amplify-awsnodeiim-dev-92122-deployment",
@@ -52,10 +52,52 @@
         "stepFinish": {
           "deploymentBucketName": "amplify-awsnodeiim-dev-92122-deployment",
           "s3Key": "amplify-builds/stepFinish-49746c50393965666e54-build.zip"
+        },
+        "sendDataWebHook": {
+          "deploymentBucketName": "amplify-awsnodeiim-dev-92122-deployment",
+          "s3Key": "amplify-builds/sendDataWebHook-2f727342547477675256-build.zip"
+        },
+        "sqsReceiver": {
+          "deploymentBucketName": "amplify-awsnodeiim-dev-92122-deployment",
+          "s3Key": "amplify-builds/sqsReceiver-565a5738303332387a7a-build.zip"
+        },
+        "s3Receiver": {
+          "deploymentBucketName": "amplify-awsnodeiim-dev-92122-deployment",
+          "s3Key": "amplify-builds/s3Receiver-464e456b497556772f62-build.zip"
         }
       },
       "auth": {
         "awsnodeiim93264e0a": {}
+      }
+    }
+  },
+  "sos": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-awsnodeiim-sos-145359-authRole",
+      "UnauthRoleArn": "arn:aws:iam::355243151688:role/amplify-awsnodeiim-sos-145359-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::355243151688:role/amplify-awsnodeiim-sos-145359-authRole",
+      "Region": "eu-west-1",
+      "DeploymentBucketName": "amplify-awsnodeiim-sos-145359-deployment",
+      "UnauthRoleName": "amplify-awsnodeiim-sos-145359-unauthRole",
+      "StackName": "amplify-awsnodeiim-sos-145359",
+      "StackId": "arn:aws:cloudformation:eu-west-1:355243151688:stack/amplify-awsnodeiim-sos-145359/009c85f0-c402-11ed-b2d7-06f5cac5e845",
+      "AmplifyAppId": "dj1sgz7wvk0pv"
+    },
+    "categories": {
+      "auth": {
+        "awsnodeiim93264e0a": {}
+      },
+      "function": {
+        "createuser": {},
+        "senddata": {},
+        "createDataDynamo": {},
+        "createJsonFile": {},
+        "stepSlice": {},
+        "stepMapping": {},
+        "stepFinish": {},
+        "sendDataWebHook": {},
+        "sqsReceiver": {},
+        "s3Receiver": {}
       }
     }
   }

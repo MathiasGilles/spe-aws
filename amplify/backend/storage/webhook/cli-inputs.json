@@ -1,0 +1,18 @@
+{
+  "resourceName": "webhook",
+  "tableName": "webhook",
+  "partitionKey": {
+    "fieldName": "id",
+    "fieldType": "string"
+  },
+  "gsi": [
+    {
+      "name": "userId__",
+      "partitionKey": {
+        "fieldName": "userId",
+        "fieldType": "string"
+      }
+    }
+  ],
+  "triggerFunctions": []
+}

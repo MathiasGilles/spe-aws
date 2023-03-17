@@ -49,4 +49,4 @@ def get_secret_name(secret_value):
       if all_secret[key] == secret_value:
         return key
 
-    raise 'Unknown token'
+    return False
