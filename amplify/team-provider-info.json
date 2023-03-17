@@ -63,7 +63,7 @@
         },
         "s3Receiver": {
           "deploymentBucketName": "amplify-awsnodeiim-dev-92122-deployment",
-          "s3Key": "amplify-builds/s3Receiver-41564a67686339454b6b-build.zip"
+          "s3Key": "amplify-builds/s3Receiver-464e456b497556772f62-build.zip"
         }
       },
       "auth": {
@@ -96,7 +96,8 @@
         "stepMapping": {},
         "stepFinish": {},
         "sendDataWebHook": {},
-        "sqsReceiver": {}
+        "sqsReceiver": {},
+        "s3Receiver": {}
       }
     }
   }
